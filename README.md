@@ -45,4 +45,4 @@ The deck-builder produces the best output when it can copy native slides from th
 
 ## Maintenance
 
-The skill content mirrors `Agent0_DeckBuilder_Spec_v2.md` (OneDrive root) and the Agent0 skill in fanatics-live/agentskills. When the spec changes, update both. Catalog schema changes (new fields, retired fields) land via the weekly `Agent0_Catalog_Sync` pipeline — keep the field tables in the two SKILL.md files in sync with the Airtable schema.
+The skill content mirrors `Agent0_DeckBuilder_Spec_v2.md` (kept with the project files in the team's shared drive) and the Agent0 skill in fanatics-live/agentskills. When the spec changes, update both. Catalog schema changes (new fields, retired fields) land via the weekly `Agent0_Catalog_Sync` pipeline — keep the field tables in the two SKILL.md files in sync with the Airtable schema.

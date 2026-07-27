@@ -35,9 +35,9 @@ and nobody loses install access during the move.
 
 ## If the repo is ever lost
 
-Nothing is gone — this folder IS the repo (git history included). Recover from
-any surviving copy (`Assouline/claude-plugins/` on the shared OneDrive, or
-`claude-plugins.zip`):
+Nothing is gone — every git clone IS the repo (git history included), and a
+`claude-plugins.zip` backup is kept in the project team's shared drive. Recover
+from any such copy:
 
 ```bash
 cd "<path-to>/claude-plugins"
