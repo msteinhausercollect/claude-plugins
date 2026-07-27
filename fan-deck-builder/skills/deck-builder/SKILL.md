@@ -98,23 +98,32 @@ Extract: audience (internal/external and who), topic/purpose, sport or region, d
 
 Use the retrieval ladder above. Gather ~3x more candidates than needed, then select for: relevance, freshness, deck diversity, narrative arc (context → value proposition → proof points → call to action).
 
-### Step 3 — Build the Structure
+### Step 3 — Build the Structure: the core deck IS the narrative
+
+**Start from the core overview deck, not from scratch.** The company tells the Fanatics Collectibles story through the curated core deck (`Fanatics_Overview_Deck.pptx`, ~36 slides: platform strength → fandom & collectibles thesis → global expansion & flagships → "Creating Moments" pillars → athlete roster). A topic deck = **the core narrative with topic-specific slides sprinkled in at the natural points** — the partner-market block after the flagship-cities slide, topic product-innovation slides inside the Creating Moments section, a localized closer at the end. Do NOT invert this (topic slides padded with generated framing); the audience is meant to receive the Fanatics story first, seen through the topic's lens.
 
 ```
-1. Cover slide (generated — dark bg, text only)
-2. Agenda / Overview (optional, for decks 15+ slides)
-3. [Content slides from catalog]
-4. Section dividers as needed (generated — dark bg, text only)
-5. Closing / Next Steps slide (generated — dark bg, text only)
+1. Core deck slides 1..N (cover retitled for the topic)
+2.   ...topic market block inserted after the global-expansion/flagship slides
+3.   ...topic product slides inserted beside their core equivalents
+4. Core closer, or the reference deck's localized closer (e.g. GRACIAS for Spain)
 ```
 
-### Step 4 — Generate the File
+### Step 4 — Generate the File: EDITABLE slides only, never images
 
-Build a `.pptx` using the format spec below (in claude.ai/Cowork, the built-in pptx capability handles file generation; in Claude Code, use python-pptx or equivalent).
+**Deliverables must be fully editable .pptx — a slide rendered as a picture is not acceptable output.** Thumbnails are for retrieval and preview only.
 
-**Catalog slides — pull the NATIVE slide, not the picture.** Every catalog record carries its Source File Name, SharePoint Link (on the Decks table), and slide number: fetch the source deck and copy the actual slide (editable text, shapes, images, layout) into the new deck. This is what makes the output adaptable — the user can apply the suggested edits. If the user has the `SharePoint_Decks` folder synced locally, read source decks from there. Thumbnails are for retrieval and preview only. **Fallback:** if a source deck can't be fetched in your environment, insert the thumbnail image full-bleed as a placeholder and flag that slide in the manifest as "image only — replace with native slide from [Source File Name], slide N."
+Copy slides **natively at the package (OPC) level** with the bundled script:
 
-**Generated slides** (cover, dividers, closing): build from the brand template.
+```bash
+python3 scripts/pptx_import_slides.py CORE.pptx SOURCE.pptx OUT.pptx  51:20 29:20 61:36
+```
+
+(each `SRCNO:AFTER` imports source logical slide SRCNO after base logical slide AFTER; the script brings each slide's media, layout, master, and theme along, drops speaker notes, and validates the result — stdlib only, handles multi-GB decks). Slide numbers = the last two digits of the Slide ID. Source decks come from the locally synced `SharePoint_Decks` folder or the SharePoint Link on the Decks table.
+
+**Only if a source deck is truly unreachable**, insert the thumbnail full-bleed as a placeholder, flag it in the manifest as "image only — REPLACE with native slide from [Source File Name], slide N", and say so prominently in the delivery message.
+
+**Generated slides** (retitled cover text, any extra dividers): edit the core deck's own slides natively or add text boxes per the measured format spec below.
 
 ## Format Specification
 
@@ -161,6 +170,8 @@ Expanded accent palettes exist for specific semantics (see SLD-139-50): **Positi
 | Body, labels, captions, footers | **Fan Sans** | Light, Regular, Medium, SemiBold, Bold, ExtraBold |
 | Accent/editorial moments (sparing) | **Fan Serif** | Regular, Italic |
 
+- **Fan Impact ships Regular ONLY — never set bold on it.** There is no bold face; asking for bold makes PowerPoint synthesize a fake weight or substitute another font entirely. This is the #1 cause of "wrong fonts" output. (Fan Sans has real Light/Regular/Medium/SemiBold/Bold/ExtraBold faces; the weight-specific family names on disk are `Fan Sans Light`, `Fan Sans SemBd`, etc.)
+- **Measured from the master (trust these over older spec text):** cover title = Fan Impact **60pt** white, left, at (0.34", 0.48"), max 3 lines; breaker title = Fan Impact **80pt** centered (max 2 lines) over a transparent→black vertical gradient overlay; breaker subtitle = **Fan Serif 18pt**; CONFIDENTIAL footer = **Fan Sans Light 8pt #F3F3F3 at 50% alpha**, centered at (3.52", 7.14"); page number = **Fan Serif 10pt #D0D3D4** right-aligned at (11.51", 7.10"); footer logo = the Fanatics flag as an **SVG picture (svgBlip)** at (0.575", 7.005") 0.502"×0.476". Covers DO carry the footer and page number.
 - **Source:** `02_FONTS.zip` (OTF folder per family; WOFF2 is web-only — ignore). OFL-licensed, so embedding in .pptx and redistribution are permitted.
 - **Fallback:** if the Fan fonts are unavailable in the generation environment (they usually are outside brand-team machines), use **Calibri** for everything and flag "generated slides use fallback font — restyle from master template" in the manifest. Never let a missing font silently change the layout.
 - **Do not set fonts via the PowerPoint theme dropdown** — the master template's theme slots are stale (Anton/Inter/Aptos); the Fan fonts are applied directly to text. When copying template slides, styling comes along automatically.
@@ -216,6 +227,8 @@ Brief description: 16pt, Floodlight White / Stadium Silver
 13. **Font fidelity:** if delivering via Google Slides, warn that the Fanatics font stack degrades in web view; native .pptx is the canonical deliverable.
 14. **Reference, then assemble freely:** when an adjacent prior deck exists, cite it as the reference ("this is what we did for X — change this, this, and that for your audience"), but pull slides from the entire catalog wherever a better fit exists. Never restrict a deck to one source.
 15. **Newest deck wins:** among equivalent slides, always take the version from the most recent deck; flag older-format slides for refresh.
+16. **Look at every slide before shipping it.** Render or view each candidate's thumbnail and reject: slides with unresolved comment boxes printed on the slide face (they exist in the catalog), and slides branded for the wrong country/athlete/partner. A "newest-format" federation slide that names Vietnam cannot appear in a Spain deck — find the target country's native equivalent (usually in the reference deck) or flag the gap.
+17. **Check the real world for events newer than the catalog.** Catalog content freezes at its Data As Of; tournaments conclude, deals close, records fall. Before framing a deck around an event (e.g. a World Cup), verify the current state — a "build up to X" slide is wrong the day after X ends, and a title win flips the whole narrative.
 
 ## Output Format
 
