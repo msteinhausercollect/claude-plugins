@@ -125,6 +125,24 @@ python3 scripts/pptx_import_slides.py CORE.pptx SOURCE.pptx OUT.pptx  51:20 29:2
 
 **Generated slides** (retitled cover text, any extra dividers): edit the core deck's own slides natively or add text boxes per the measured format spec below.
 
+### Bundled scripts (in this skill's `scripts/` directory — stdlib unless noted)
+
+| Script | Purpose |
+|---|---|
+| `catalog_query.py` | Retrieval ladder over the Airtable catalog: keyword/sport/category/deck filters, canonical-dedupe, freshness sort, thumbnail download for visual QA |
+| `pptx_import_slides.py` | Import native slides from any deck into any base deck (media/layout/master/theme travel along; drops notes; validates) |
+| `pptx_swap_picture.py` | Replace the image behind an existing picture shape — layout and overlays untouched, auto center-crop to the frame |
+| `pptx_render_verify.py` | Render via real PowerPoint to PDF + page PNGs for the mandatory look-at-every-slide QA pass (needs `pypdf`; macOS) |
+
+### Asset libraries (SharePoint, synced via OneDrive)
+
+On company Macs these appear under `~/Library/CloudStorage/OneDrive-SharedLibraries-FanaticsCollectibles/`:
+
+- **`Strategic Initiatives File Storage - Photos/`** — approved brand photography and logos. `Logos/` holds club/league crest collections (Champions League includes the Spanish clubs; also Premier League, Bundesliga, MLB/MLS/NBA/NFL, Topps brands) — convert `.webp` to PNG before use (`sips -s format png in.webp --out out.png`); PowerPoint cannot embed webp. Fan/collector photography lives in the other folders and grows over time (Pixieset exports land here).
+- **`Strategic Initiatives File Storage - Videos/`** — campaign videos (e.g. Mourinho EURO 2024); PowerPoint can embed these natively.
+
+**Automated photo replacement:** when a deck needs different photography (e.g. localized fan photos), browse the Photos library, VIEW the candidates (never pick by filename alone), choose per the brand rules — candid, no direct eye contact, orientation matching the frame — then swap with `pptx_swap_picture.py` and confirm with `pptx_render_verify.py`. If the library has no suitable photo, flag the gap in the manifest as a photo request; do not substitute off-brand imagery.
+
 ## Format Specification
 
 ### Canvas
@@ -229,7 +247,7 @@ Brief description: 16pt, Floodlight White / Stadium Silver
 15. **Newest deck wins:** among equivalent slides, always take the version from the most recent deck; flag older-format slides for refresh.
 16. **Look at every slide before shipping it.** Render or view each candidate's thumbnail and reject: slides with unresolved comment boxes printed on the slide face (they exist in the catalog), and slides branded for the wrong country/athlete/partner. A "newest-format" federation slide that names Vietnam cannot appear in a Spain deck — find the target country's native equivalent (usually in the reference deck) or flag the gap.
 17. **Check the real world for events newer than the catalog.** Catalog content freezes at its Data As Of; tournaments conclude, deals close, records fall. Before framing a deck around an event (e.g. a World Cup), verify the current state — a "build up to X" slide is wrong the day after X ends, and a title win flips the whole narrative.
-18. **Photography stays manual — never AI-generate or repaint imagery** (team decision, 2026-07). Logos, crests, and other existing licensed assets may be repositioned or swapped natively; but when a slide needs different photography (e.g. localized fan photos), flag it in the manifest as a photo request — hero photos come from the brand's Pixieset library (candid, no direct eye contact per the master's usage notes) and a human picks them. Do not send company imagery to external image services.
+18. **Never AI-generate or repaint imagery** (team decision, 2026-07), and never send company imagery to external image services. Photo REPLACEMENT from the approved SharePoint Photos library is automated (see Asset libraries above) — human curation happens at the library level, where the team decides what imagery is available. If the library lacks a suitable photo, flag the gap in the manifest; do not fabricate or substitute off-brand imagery.
 
 ## Output Format
 
