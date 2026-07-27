@@ -43,6 +43,30 @@ The deck-builder produces the best output when it can copy native slides from th
 - **Move into the fanatics-live org later**: transfer the repo (Settings → Transfer ownership) for org-owned durability; a Claude for Work admin can then auto-enable it for everyone (`extraKnownMarketplaces` + `enabledPlugins` in managed settings).
 - **Claude in Slack (Claude Tag)**: an admin can register this repo as a skills repo at claude.ai/admin-settings → Claude Tag → Plugins, making the skills available in Slack channels.
 
+## Standing this up as a Slack agent (Claude Tag)
+
+If the company wants these skills available to everyone in Slack (e.g. as an
+Agent0 fallback), this repo can be registered directly as a Claude Tag skills
+repo — it is already in the required plugin format.
+
+Requirements: Claude **Team or Enterprise** plan, someone with the **Owner**
+role in the Claude org, and a **Slack workspace admin**. Setup is one page at
+`claude.ai/admin-settings/claude-tag`:
+
+1. Install the Claude app to Slack; a workspace admin runs `@Claude connect`
+   and pairs the workspace with the code in the admin console.
+2. Add an **Airtable connection** (credential + allowlist `api.airtable.com`)
+   so the skills can read the slide catalog — keys are injected at a proxy and
+   never exposed to the model.
+3. Register **this repository** as the skills repo (enable auto-sync) and
+   attach the plugin to an Access bundle.
+4. Set a monthly spend limit and launch.
+
+Notes: Claude Tag runs in Anthropic's cloud sandbox — it reads Airtable fine,
+but native .pptx assembly from multi-GB source decks requires a SharePoint
+connection to be configured, and finished files are delivered as links/artifacts
+rather than direct Slack uploads.
+
 ## Maintenance
 
 The skill content mirrors `Agent0_DeckBuilder_Spec_v2.md` (kept with the project files in the team's shared drive) and the Agent0 skill in fanatics-live/agentskills. When the spec changes, update both. Catalog schema changes (new fields, retired fields) land via the weekly `Agent0_Catalog_Sync` pipeline — keep the field tables in the two SKILL.md files in sync with the Airtable schema.

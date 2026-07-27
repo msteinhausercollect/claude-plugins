@@ -229,6 +229,7 @@ Brief description: 16pt, Floodlight White / Stadium Silver
 15. **Newest deck wins:** among equivalent slides, always take the version from the most recent deck; flag older-format slides for refresh.
 16. **Look at every slide before shipping it.** Render or view each candidate's thumbnail and reject: slides with unresolved comment boxes printed on the slide face (they exist in the catalog), and slides branded for the wrong country/athlete/partner. A "newest-format" federation slide that names Vietnam cannot appear in a Spain deck — find the target country's native equivalent (usually in the reference deck) or flag the gap.
 17. **Check the real world for events newer than the catalog.** Catalog content freezes at its Data As Of; tournaments conclude, deals close, records fall. Before framing a deck around an event (e.g. a World Cup), verify the current state — a "build up to X" slide is wrong the day after X ends, and a title win flips the whole narrative.
+18. **Photography stays manual — never AI-generate or repaint imagery** (team decision, 2026-07). Logos, crests, and other existing licensed assets may be repositioned or swapped natively; but when a slide needs different photography (e.g. localized fan photos), flag it in the manifest as a photo request — hero photos come from the brand's Pixieset library (candid, no direct eye contact per the master's usage notes) and a human picks them. Do not send company imagery to external image services.
 
 ## Output Format
 
