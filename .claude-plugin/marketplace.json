@@ -1,0 +1,22 @@
+{
+  "name": "fanatics-collectibles",
+  "owner": {
+    "name": "Fanatics Collectibles"
+  },
+  "metadata": {
+    "description": "Fanatics Collectibles internal Claude plugins — slide catalog search and on-brand deck assembly.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "fan-deck-builder",
+      "source": "./fan-deck-builder",
+      "description": "Search the Fanatics Collectibles slide catalog (4,969 slides / 145 decks in Airtable) and assemble on-brand PowerPoint decks from it.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Michael Steinhauser"
+      },
+      "keywords": ["powerpoint", "deck", "slides", "airtable", "fanatics"]
+    }
+  ]
+}

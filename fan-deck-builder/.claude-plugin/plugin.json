@@ -1,0 +1,9 @@
+{
+  "name": "fan-deck-builder",
+  "description": "Fanatics Collectibles slide catalog tools: search 4,969 cataloged slides across 145 decks, and assemble polished, on-brand PowerPoint decks from real catalog slides.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Michael Steinhauser"
+  },
+  "keywords": ["powerpoint", "deck", "slides", "airtable", "fanatics"]
+}
