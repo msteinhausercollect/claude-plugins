@@ -72,6 +72,7 @@ Real requests are specific: a game, an event, a person, a team, a league. Expect
 - **Federation pitches:** near-identical by design — the **Italy federation deck** is the standard reference to build from. What changes per country: branding/crests, roster and athlete slides, market data, localized closer.
 - **Athlete/talent pitches:** build off the closest prior athlete pitch (Anthony Edwards, Kiyan Anthony, AJ Dybantsa are the exemplars). The pitch's job is part *teaching* (how the hobby and our products work) and part *letting the client see themselves on the product* — personalized card visuals featuring THIS athlete are the emotional core of the deck. Customize those first; generic product slides come second.
 - **Internal decks** (town halls, event recaps): mostly NOT in the pitch catalog. Previous Town Hall decks exist in shared storage but are uncataloged — say so and ask for them rather than force-fitting pitch slides into an internal-audience deck.
+- **Teach the hobby to newcomers:** any partner-facing deck for an audience new to collecting (entertainment IPs, motorsport/leagues without card history, retail chains, new athletes' agencies) should include the rarity/chase teaching beat — what makes cards valuable and hunted. The canonical slide is the **1/1 Superfractor story (SLD-088-10 family)**; the collecting-primer slides in the DECK-139 standard blocks are its supporting cast. A product story without the "why people chase this" slide doesn't land with a hobby newcomer.
 
 ## Retrieval Strategy
 
@@ -112,6 +113,8 @@ Use the retrieval ladder above. Gather ~3x more candidates than needed, then sel
 ### Step 3 — Build the Structure: the core deck IS the narrative
 
 **Start from the core overview deck, not from scratch.** The company tells the Fanatics Collectibles story through the curated core deck (`Fanatics_Overview_Deck.pptx`, ~36 slides: platform strength → fandom & collectibles thesis → global expansion & flagships → "Creating Moments" pillars → athlete roster). A topic deck = **the core narrative with topic-specific slides sprinkled in at the natural points** — the partner-market block after the flagship-cities slide, topic product-innovation slides inside the Creating Moments section, a localized closer at the end. Do NOT invert this (topic slides padded with generated framing); the audience is meant to receive the Fanatics story first, seen through the topic's lens. The catalog owner's rule, verbatim: *"the skeleton of every presentation should include some version of Fanatics_Overview."* When the catalog has no slide for a needed beat, **fill the blank from the fillable-archetype template deck** (`Fanatics_Template_With_Exemplars.pptx`, MASTER PPT folder) rather than designing from scratch.
+
+**Depth check:** in a standard 12–18-slide deck, expect roughly **half** the slides to come from the core deck / DECK-139 standard blocks. If topic slides outnumber core-narrative slides, you have probably inverted the structure — re-check before assembly. (Exceptions: the user explicitly narrows scope, or the reference deck itself is the spine, as in federation and athlete pitches.)
 
 ```
 1. Core deck slides 1..N (cover retitled for the topic)
